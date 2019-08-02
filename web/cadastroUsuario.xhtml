@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"></link>
+
+    <title> Cadastrar Usuário | BiblioTec</title>
+
+    <link href="export/images/icone.png" rel="shortcut icon" type="image/x-png"></link>
+    <link rel="stylesheet" type="text/css" href="CSS/cadastroUsuario.css"/>
+    <script type="text/javascript" src="JS/ajudaPopUp.js"/>
+    <script type="text/javascript" src="JS/validacoesUsuario.js"/>
+
+</h:head>
+<h:body>
+    <div id="popup" class="popup">
+        <p>Olá,
+            <button class="fechaAjuda" onclick="fechar()" >x</button>
+            <b></b>
+            <p>
+                Para cadastrar-se em nosso sistema, siga os passos abaixo:<br/>
+                1º) Fornecer os dados necessário,<b> é obrigatório o preenchimento de todos os dados. </b><br/>
+                2º) Após preencher corretamente todos os dados, clique em <b>Enviar dados</b><br/>.
+                3º) Aguardar o(a) balconista realizar a conferência das informações e, posteriormente, a aprovação do seu cadastro caso todos os dados estejam corretos.
+            </p>
+        </p>
+
+    </div>
+    <i><h1 align="center"> BiblioTec </h1></i>
+    <p:menubar style="align-items: center">
+        <p:menuitem value="INÍCIO" url="gestaoBibliotecas.xhtml"></p:menuitem>
+        <p:menuitem value="AJUDA?" url="javascript: abrir();"></p:menuitem>
+    </p:menubar>
+    <section alig="center" class="right">
+        <div class="jumbotron">
+            <h:form id="cadastroLivro">
+                <div class="form-group">
+                    <h5 align="center">Formulário de Cadastro</h5><br/>
+                </div>
+            </h:form>
+            <h:form id="Usuario">
+                <div class="form-group">
+                    <h:outputLabel value="Nome Completo"  /><font color="red">*</font>
+                    <p:inputText class="form-control" value="#{usuarioController.user.nome}" required="true" placeholder="Insira o seu nome completo" maxlength="60"/>
+
+                    <h:outputLabel value="Username"  /><font color="red">*</font>
+                    <p:inputText value="#{usuarioController.user.usuario}" class="form-control"
+                                 required="true" placeholder="Insira o username de acesso" maxlength="30"></p:inputText>
+
+                    <h:outputLabel value="Senha"  /><font color="red">*</font>
+                    <p:inputText value="#{usuarioController.user.senha}" class="form-control"
+                                 required="true" placeholder="Insira a senha de acesso" maxlength="30"></p:inputText>
+
+                    <h:outputLabel value="RG"/><font color="red">*</font>
+                    <p:inputMask class="form-control" value="#{usuarioController.user.rg}" mask="99.999.999-9" required="true" placeholder="Insira o seu RG" maxlength="12"/>
+
+                    <h:outputLabel value="CPF"/><font color="red">*</font>
+                    <p:inputMask id="Cpf" class="form-control" value="#{usuarioController.user.cpf}" onchange="validaCpf(this.value)" mask="999.999.999-99" required="true" placeholder="Insira o seu CPF" maxlength="14"/>
+
+                    <h:outputLabel value="Endereço"/><font color="red">*</font>
+                    <p:inputText value="#{usuarioController.user.endereco}" class="form-control"
+                                 required="true" placeholder="Insira os dados do seu endereço(ex: rua, bairro, número, etc...)" maxlength="100"></p:inputText>
+
+                    <h:outputLabel value="CEP"/><font color="red">*</font>
+                    <p:inputMask class="form-control" value="#{usuarioController.user.cep}" mask="99999-999" required="true" placeholder="Insira o CEP da sua rua" maxlength="8"/>
+
+                    <h:outputLabel value="Cidade"/><font color="red">*</font>
+                    <p:inputText value="#{usuarioController.user.cidade}" class="form-control"
+                                 required="true" placeholder="Insira a cidade onde mora" maxlength="60"></p:inputText>
+
+                    <h:outputLabel for="uf" value="Estado"/><font color="red">*</font><br/>
+                    <p:selectOneMenu id="uf" required="true" onchange="validaEstado(this.value)" value="#{usuarioController.user.estado}" dynamic="true" style="width:55px">
+                        <f:selectItem itemLabel="UF" itemValue="UF" noSelectionOption="true"/>
+                        <f:selectItems value="#{usuarioController.estados}"/>
+                    </p:selectOneMenu>
+
+                    <br/><h:outputLabel value="E-mail"/><font color="red">*</font>
+                    <p:inputText id="Email" value="#{usuarioController.user.email}" class="form-control"
+                                 required="true" onchange="validaEmail(this.value)" placeholder="Insira seu endereço de e-mail" maxlength="100"></p:inputText>
+
+                    <h:outputLabel value="Data Nascimento"/><font color="red">*</font>
+                    <p:inputMask class="form-control" value="#{usuarioController.user.datanasc}" mask="99/99/9999" required="true" placeholder="DD/MM/AAAA" maxlength="10"/>
+                </div>
+                <div class="form-group">
+                    <h:commandButton value="Enviar dados" class="btn btn-block btn-primary"
+                                     action="#{usuarioController.realizarCadastroUsuario}"/>
+                </div>
+            </h:form>
+        </div>
+    </section>
+</h:body>
+</html>

@@ -1,0 +1,28 @@
+.div-principal {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 400px;
+    height: 150px;
+    border: solid 0.5px black;
+    border-radius: 5px;
+    display: block;
+}
+
+.geral {
+    background: gray;
+}
+
+.btn {
+    position: absolute;
+    top: 0px;
+    bottom: -35px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 247px;
+    height: 40px;
+}

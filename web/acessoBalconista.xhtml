@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"></link>
+
+    <title>Menu Balconista | BiblioTec</title>
+
+    <link href="export/images/icone.png" rel="shortcut icon" type="image/x-png"></link>
+    <link rel="stylesheet" type="text/css" href="CSS/acessoBalconista.css"/>
+    <script type="text/javascript" src="JS/ajudaPopUp.js"/>
+
+</h:head>
+<h:body>
+    <!--RETORNOS-->
+    <div align="left" class="retornos" id="retornos">
+        <b>
+            <font color="#{usuarioController.user.color_msg}">
+                #{usuarioController.user.msg_autenticacao}
+            </font>
+            <font color="#{emprestimoController.emp.color_msg_retorno}">
+                #{emprestimoController.emp.msg_retorno}
+            </font>
+            <font color="#{livroController.livro.color_msg_retorno}">
+                #{livroController.livro.msg_retorno}
+            </font>
+        </b>
+    </div>
+    <i><h1 align="center"> BiblioTec </h1></i>
+    <h:form>
+        <p:menubar style="align-items: center">
+            <p:menuitem value="SAIR" action="#{loginController.logoutSession}"/>
+            <p:menuitem value="AJUDA?" url="javascript: abrir();"></p:menuitem>
+            <p:menuitem rendered="#{emprestimoController.consultaQtdeEmpAtrasados() != 0}" style="color: red;"
+                        value="PENDÊNCIAS" action="meusEmprestimos?faces-redirect=true"></p:menuitem>
+        </p:menubar>
+    </h:form>
+    <div class="usuarios" id="usuarios">
+        <section alig="center" class="row">
+            <div class="jumbotron">
+                <h:form id="telaBalconista">
+                    <div class="form-group">
+                        <h5 align="center">Controle de Usuarios</h5>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Cadastrar" class="btn btn-block btn-primary"
+                                         action="cadastrarUsuarioBalconista?faces-redirect=true"></h:commandButton>
+
+                        <h:commandButton value="Consultar" class="btn btn-block btn-primary"
+                                         action="consultaUsuario?faces-redirect=true"></h:commandButton>
+
+                        <h:commandButton value="Alterar" class="btn btn-block btn-primary"
+                                         action="editarUsuario?faces-redirect=true"></h:commandButton>
+
+                        <h:commandButton value="Deletar" class="btn btn-block btn-primary"
+                                         action="deletarUsuario?faces-redirect=true"></h:commandButton>
+
+                        <h:commandButton value="Redefinir Senha" class="btn btn-block btn-primary"
+                                         action="redefinirSenhaBalconista?faces-redirect=true"></h:commandButton>
+                    </div>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <div class="jumbotron" id="emprestimo">
+        <section alig="center" class="row">
+            <h:form id="telaBalconista1">
+                <div class="form-group">
+                    <h5 align="center">Controle de Empréstimos</h5>
+                </div>
+                <div class="form-group">
+                    <h:commandButton value="Cadastrar" class="btn btn-block btn-primary"
+                                     action="cadastrarEmprestimo?faces-redirect=true"></h:commandButton>
+
+                    <h:commandButton value="Consultar" class="btn btn-block btn-primary"
+                                     action="consultarEmprestimo?faces-redirect=true"></h:commandButton>
+
+                    <h:commandButton value="Alterar" class="btn btn-block btn-primary"
+                                     action="alterarEmprestimo?faces-redirect=true"></h:commandButton>
+
+                    <h:commandButton value="Finalizar" class="btn btn-block btn-primary"
+                                     action="deletarEmprestimo?faces-redirect=true"></h:commandButton>
+                </div>
+            </h:form>
+        </section>
+    </div>
+    <div class="jumbotron" id="utilitarios">
+        <section alig="center" class="row">
+            <h:form>
+                <div class="form-group">
+                    <h5 align="center">Utilitários</h5>
+                </div>
+                <div class="form-group">
+                    <h:commandButton value="Consultar Livros" class="btn btn-block btn-primary"
+                                     action="consultarAcervoBalconista?faces-redirect=true"></h:commandButton>
+
+                    <h:commandButton value="Reservar Livros" class="btn btn-block btn-primary"
+                                     action="cadastrarReserva?faces-redirect=true"/>
+
+                    <h:commandButton value="Cancelar Reservas" class="btn btn-block btn-primary"
+                                     action="cancelarReserva?faces-redirect=true"/>
+
+                    <h:commandButton value="Minhas Reservas" class="btn btn-block btn-primary"
+                                     action="minhasReservas?faces-redirect=true"/>
+
+                    <h:commandButton value="Meus Empréstimos" class="btn btn-block btn-primary"
+                                     action="meusEmprestimos?faces-redirect=true"></h:commandButton>
+
+                    <h:commandButton value="Dados Cadastrais" class="btn btn-block btn-primary"
+                                     action="meusDados?faces-redirect=true"></h:commandButton>
+                </div>
+                <div id="popup" class="popup">
+                    <p>
+                        <button class="fechar" onclick="fechar()">x</button>
+                        <b></b>
+                        <p>
+                            Olá, notamos que você é um <b>Balconista</b>, então temos as sessões:
+                        </p>
+                        <b></b>
+                        <p>
+                            <b>
+                                - Controle de Usuários :
+                            </b>
+                            Onde você poderá cadastrar um novo usuários, consultar os dados de um determinado usuário, alterar as informações cadastrais do usuário e até mesmo excluí-lo.
+                        </p>
+                        <b></b>
+                        <p>
+                            <b>
+                                - Controle de Empréstimos :
+                            </b>
+                            Onde você poderá cadastrar um empréstimo, consultar dos dados de um determinado empréstimo, alterar as informações do empréstimo desejado e até mesmo marcar o empréstimo como finalizado.
+                        </p>
+                        <b></b>
+                        <p>
+                            <b>
+                                - Utilitários :
+                            </b>
+                            Nesta sessão você pode consultar os livros do acervo, e ter informações sobre os empréstimos em seu nome e até mesmo atualizar suas informações cadastrais.
+                        </p>
+
+                    </p>
+                </div>
+            </h:form>
+        </section>
+        <div class="reset">
+            #{usuarioController.user.msg_autenticacao = ''}
+            #{usuarioController.user.color_msg = ''}
+            #{emprestimoController.emp.msg_retorno = ''}
+            #{emprestimoController.emp.color_msg_retorno = ''}
+            #{emprestimoController.emp.codusuario = ''}
+            #{emprestimoController.emp.codemprestimo = -1}
+            #{usuarioController.user.nome = ''}
+            #{usuarioController.user.usuario = ''}
+            #{usuarioController.user.senha = ''}
+            #{usuarioController.user.rg = ''}
+            #{usuarioController.user.cpf = ''}
+            #{usuarioController.user.email = ''}
+            #{usuarioController.user.endereco = ''}
+            #{usuarioController.user.cep = ''}
+            #{usuarioController.user.cidade = ''}
+            #{usuarioController.user.estado = ''}
+            #{usuarioController.user.datanasc = ''}
+            #{usuarioController.user.permissao = ''}
+            #{usuarioController.user.ativo = -1}
+            #{usuarioController.user.codusuario = ''}
+            #{livroController.livro.msg_retorno = ''}
+            #{livroController.livro.codlivro = -1}
+            #{livroController.livro.titulo = ''}
+            #{emprestimoController.emp.codlivro = -1}
+            #{emprestimoController.emp.datadev = ''}
+            #{emprestimoController.emp.nome_user = ''}
+            #{usuarioController.user.jaativado = 0}
+            #{usuarioController.user.busca = ''}
+        </div>
+        <div class="form-group" id="perfil">
+            <p> Perfil: Balconista</p>
+        </div>
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"></link>
+
+    <title>Deletar Livro | BiblioTec</title>
+
+    <link href="export/images/icone.png" rel="shortcut icon" type="image/x-png"></link>
+    <link rel="stylesheet" type="text/css" href="CSS/deletarLivro.css"/>
+    <script type="text/javascript" src="JS/ajudaPopUp.js"/>
+    <script type="text/javascript" src="JS/confirmacaoPopUp.js"/>
+
+</h:head>
+<h:body>
+    <div id="popup" class="popup">
+        <button class="fechar" onclick="fechar()">x</button>
+        <p>Olá,
+            <b></b>
+            <p>
+                Utilize a opção <b> Buscar </b> para filtrar os dados do livro que deseja remover do sistema.
+            </p>
+            <b></b>
+            <p>
+                Em seguida, insira o código <b> ID </b> do livro e clique em <b>Deletar</b>.
+            </p>
+        </p>
+    </div>
+
+    <i><h1 align="center"> BiblioTec </h1></i>
+    <p:menubar style="align-items: center">
+        <p:menuitem value="MENU INICIAL" url="acessoBibliotecario.xhtml"></p:menuitem>
+        <p:menuitem value="AJUDA?" url="javascript: abrir();"></p:menuitem>
+    </p:menubar>
+    <section alig="center" class="right">
+        <div class="jumbotron">
+            <h:form id="telaBibliotecario">
+                <div class="form-group">
+                    <h5 align="center">Acervo de Livros</h5><br/>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <h:commandButton value="Cadastrar Livro" class="btn btn-block btn-primary"
+                                         action="cadastrarLivro?faces-redirect=true" url="cadastrarLivro.xhtml"></h:commandButton>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Consultar Livro" class="btn btn-block btn-primary"
+                                         action="consultarLivro?faces-redirect=true" url="cadastrarLivro.xhtml"></h:commandButton>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Alterar Livro" class="btn btn-block btn-primary"
+                                         action="alterarLivro?faces-redirect=true" url="cadastrarLivro.xhtml"></h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+            <p:outputLabel value="Livros"/><font color="red">*</font>
+            <h:form id="Livro">
+                <p:selectOneMenu filter="true" value="#{livroController.livro.codlivro}" filterMatchMode="contains"
+                                 required="true" style="width:1290px" panelStyle="width:1330px">
+
+                    <f:selectItem noSelectionOption="true" itemLabel="Selecione um livro"/>
+                    <f:selectItems value="#{livroController.realizarConsultaLivroBibliotecarioSoAtivos()}" var="book"
+                                   itemLabel="Título: #{book.titulo} | Autor: #{book.autor} | Editora: #{book.editora} | Ano Lanç.: #{book.anolancamento} | Volume: #{book.volume} | Catalogação: #{book.codcatalogacao} | Num. Chamada: #{book.numchamada}"
+                                   itemValue="#{book.codlivro}"/>
+                </p:selectOneMenu>
+                <div id="conf" class="conf">
+                    <p align="center">
+                        <h:outputLabel value="Deseja deletar o livro selecionado?"/>
+                    </p>
+                    <h:form>
+                        <div class="form-group">
+                            <h:commandButton value="Sim" class="btn btn-block btn-primary"
+                                             action="#{livroController.realizarDelecaoLivro}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton value="Não" class="btn btn-block btn-primary"
+                                             onclick="fecha()"></h:commandButton>
+                        </div>
+                    </h:form>
+                </div>
+                <div class="form-group">
+                    <h:commandButton value="Deletar Livro" class="btn btn-block btn-primary"
+                                     rendered="true" onclick="abri()"></h:commandButton>
+                </div>
+            </h:form>
+        </div>
+    </section>
+</h:body>
+</html>

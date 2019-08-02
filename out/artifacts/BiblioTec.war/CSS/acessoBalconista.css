@@ -1,0 +1,97 @@
+.popup {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 600px;
+    height: 350px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+    display: none;
+}
+
+.retornos {
+    position: fixed;
+    top: -350px;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 1340px;
+    height: 45px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+}
+
+.fechar {
+    position: absolute;
+    top: -300px;
+    bottom: 0;
+    left: 0;
+    right: -550px;
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    border: black 1px solid;
+    border-radius: 3px;
+    background: gray;
+    color: blue;
+}
+
+.usuarios {
+    position: fixed;
+    top: -300px;
+    bottom: 0;
+    left: 0;
+    right: 1070px;
+    margin: auto;
+    width: 250px;
+    height: 0px;
+}
+
+#perfil {
+    position: fixed;
+    top: 780px;
+    bottom: 0;
+    left: 0;
+    right: 1090px;
+    margin: auto;
+    width: 194px;
+    height: 405px;
+    border: 1px black;
+}
+
+#emprestimo {
+    position: fixed;
+    top: 105px;
+    bottom: 0;
+    left: 0;
+    right: 538px;
+    margin: auto;
+    width: 300px;
+    height: 405px;
+}
+
+#utilitarios {
+    position: fixed;
+    top: 105px;
+    bottom: 0;
+    left: 0;
+    right: 40px;
+    margin: auto;
+    width: 194px;
+    height: 405px;
+    border: 1px black;
+}
+
+.emp {
+    height: 216px;
+}
+
+.reset{
+    display: none;
+}

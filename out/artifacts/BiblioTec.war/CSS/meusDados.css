@@ -1,0 +1,41 @@
+#table {
+    left: 5px;
+    width: 672px;
+    height: 970px;
+    border: solid 1pX darkgray;
+    display: none;
+}
+
+#novosDados {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    top: 103px;
+    right: 0px;
+    left: 0px;
+    width: 1343px;
+    height: 970px;
+    border: solid 1pX darkgray;
+    display: block;
+}
+
+.conf {
+    position: fixed;
+    top: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
+    height: 200px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+    display: none;
+}
+
+#Salvar{
+    position: absolute;
+    bottom: -10px;
+    left: 540px;
+}

@@ -1,0 +1,29 @@
+.popup {
+    position: fixed;
+    top: -200px;
+    bottom: 0;
+    left: 0;
+    right: 0px;
+    margin: auto;
+    width: 650px;
+    height: 200px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+    display: none;
+}
+
+.fechaAjuda {
+    position: absolute;
+    top: -155px;
+    bottom: 0;
+    left: 0;
+    right: -605px;
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    border: black 1px solid;
+    border-radius: 3px;
+    background: gray;
+    color: blue;
+}

@@ -1,0 +1,58 @@
+.popup {
+    position: fixed;
+    top: 110px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
+    height: 230px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+    display: none;
+}
+
+.jumbotron {
+    position: fixed;
+    top: 150px;
+    bottom: 0;
+    left: -1080px;
+    right: 0;
+    margin: auto;
+    width: 270px;
+    height: 450px;
+}
+
+.retornos {
+    position: fixed;
+    top: -350px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 1340px;
+    height: 45px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+}
+
+.fechar {
+    position: absolute;
+    top: -190px;
+    bottom: 0;
+    left: 0;
+    right: -460px;
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    border: black 1px solid;
+    border-radius: 3px;
+    background: gray;
+    color: blue;
+}
+
+.resetValue{
+    display: none;
+}

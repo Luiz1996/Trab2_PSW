@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"></link>
+
+    <title>Menu Aluno | BiblioTec</title>
+
+    <link href="export/images/icone.png" rel="shortcut icon" type="image/x-png"></link>
+    <link rel="stylesheet" type="text/css" href="CSS/acessoAluno.css"/>
+    <script type="text/javascript" src="JS/ajudaPopUp.js"/>
+
+</h:head>
+<h:body>
+    <div align="left" class="retornos" id="retornos">
+        <b>
+            <font color="#{livroController.livro.color_msg_retorno}">
+                #{livroController.livro.msg_retorno}
+            </font>
+            <font color="#{usuarioController.user.color_msg}">
+                #{usuarioController.user.msg_autenticacao}
+            </font>
+        </b>
+    </div>
+
+    <i><h1 align="center"> BiblioTec </h1></i>
+    <h:form>
+        <p:menubar>
+            <p:menuitem value="SAIR" action="#{loginController.logoutSession}"/>
+            <p:menuitem value="AJUDA?" url="javascript: abrir();"></p:menuitem>
+            <p:menuitem rendered="#{emprestimoController.consultaQtdeEmpAtrasados() != 0}" style="color: red;" value="PENDÊNCIAS" action="meusEmprestimos?faces-redirect=true"></p:menuitem>
+        </p:menubar>
+    </h:form>
+    <section alig="center" class="right">
+        <div class="jumbotron">
+            <h:form id="telaAluno">
+                <h5 align="center">Menu do Aluno</h5>
+                <div class="menu">
+                    <div class="form-group">
+                        <h:commandButton value="Consultar Livros" class="btn btn-block btn-primary"
+                                         action="consultarAcervoAluno?faces-redirect=true"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Reservar Livros" class="btn btn-block btn-primary"
+                                         action="cadastrarReserva?faces-redirect=true"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Cancelar Reservas" class="btn btn-block btn-primary"
+                                         action="cancelarReserva?faces-redirect=true"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Minhas Reservas" class="btn btn-block btn-primary"
+                                         action="minhasReservas?faces-redirect=true"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Meus Empréstimos" class="btn btn-block btn-primary"
+                                         action="meusEmprestimos?faces-redirect=true"/>
+                    </div>
+                    <div class="form-group">
+
+                        <h:commandButton value="Dados Cadastrais" class="btn btn-block btn-primary"
+                                         action="meusDados?faces-redirect=true"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <p> Perfil: Aluno</p>
+                    </div>
+                </div>
+                <div id="popup" class="popup">
+                    <p>
+                        <button class="fechar" onclick="fechar()">x</button>
+                        <b></b>
+                        <p>
+                            Olá, notamos que você é um <b>Aluno(a)</b>, então temos a sessão:
+                        </p>
+                        <b></b>
+                        <p>
+                            <b>
+                                - Menu do Aluno :
+                            </b>
+                            Esta sessão possui as funcionalidades particulares de um aluno, onde você pode consultar os livros do acervo da biblioteca e também a disponibildiade para empréstimos, pode reservar e cancelar reservas de livros, ter acesso aos empréstimos em seu nome e também pode editar suas informações cadastrais.
+                        </p>
+                        <b></b>
+                    </p>
+                </div>
+            </h:form>
+        </div>
+        <div class="resetValue">
+            #{usuarioController.user.msg_autenticacao = ''}
+            #{usuarioController.user.nome = ''}
+            #{usuarioController.user.usuario = ''}
+            #{usuarioController.user.senha = ''}
+            #{usuarioController.user.rg = ''}
+            #{usuarioController.user.cpf = ''}
+            #{usuarioController.user.email = ''}
+            #{usuarioController.user.endereco = ''}
+            #{usuarioController.user.cep = ''}
+            #{usuarioController.user.cidade = ''}
+            #{usuarioController.user.estado = ''}
+            #{usuarioController.user.datanasc = ''}
+            #{livroController.livro.msg_retorno = ''}
+            #{livroController.livro.codlivro = -1}
+            #{livroController.livro.titulo = ''}
+        </div>
+    </section>
+</h:body>
+</html>

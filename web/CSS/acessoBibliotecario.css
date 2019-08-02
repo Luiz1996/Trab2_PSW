@@ -1,0 +1,72 @@
+.fechar {
+    position: absolute;
+    top: -240px;
+    bottom: 0;
+    left: 0;
+    right: -460px;
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    border: black 1px solid;
+    border-radius: 3px;
+    background: gray;
+    color: blue;
+}
+
+.retornos {
+    position: fixed;
+    top: -350px;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 1340px;
+    height: 45px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+}
+
+.popup {
+    position: fixed;
+    top: 110px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
+    height: 280px;
+    padding: 15px;
+    border: solid 1pX black;
+    background: white;
+    display: none;
+}
+
+#section {
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 1150px;
+    margin: auto;
+    width: 200px;
+    height: 400px;
+    border-radius: 5px;
+    color: black;
+}
+
+#utilitarios {
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 753px;
+    margin: auto;
+    width: 194px;
+    height: 400px;
+    border: 1px black;
+}
+
+.resetValues{
+    display: none;
+}

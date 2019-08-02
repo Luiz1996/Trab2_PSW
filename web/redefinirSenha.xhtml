@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"></link>
+    <title>Redefinir Senha | BiblioTec</title>
+    <link href="export/images/icone.png" rel="shortcut icon" type="image/x-png"></link>
+    <link rel="stylesheet" type="text/css" href="CSS/redefinirSenha.css"/>
+    <script type="text/javascript" src="JS/ajudaPopUp.js"/>
+    <script type="text/javascript" src="JS/validacoesUsuario.js"/>
+
+</h:head>
+<h:body>
+    #{usuarioController.user.senha = ''}
+    <i><h1 align="center"> BiblioTec </h1></i>
+    <p:menubar style="align-items: center">
+        <p:menuitem value="INÍCIO" url="gestaoBibliotecas.xhtml"></p:menuitem>
+        <p:menuitem value="AJUDA?" url="javascript: abrir();"></p:menuitem>
+    </p:menubar>
+    <div class="jumbotron" id="geral">
+        <section class="row">
+            <div class="dadosPreenchidos">
+                <h:form id="Usuario">
+                    <h5 align="center">Redefinir Senha</h5><br></br>
+                    <div class="email" id="email">
+                        <h:outputLabel value="E-mail"/><font color="red">*</font><br></br>
+                        <p:inputText id="Email"
+                                     value="#{usuarioController.user.email}"
+                                     class="form-control"
+                                     placeholder="Insira seu e-mail"
+                                     onchange="validaEmail(this.value)"
+                                     maxlength="100"
+                                     required="true"/>
+                    </div>
+                    <div class="cpf" id="cpf">
+                        <h:outputLabel value="CPF"/><font color="red">*</font><br></br>
+                        <p:inputMask class="form-control"
+                                     value="#{usuarioController.user.cpf}"
+                                     mask="999.999.999-99"
+                                     required="true"
+                                     placeholder="Insira o seu CPF"
+                                     maxlength="14"
+                                     id="Cpf"
+                                     onchange="validaCpf(this.value)"/>
+                    </div>
+                    <div class="dtNasc" id="dtNasc">
+                        <h:outputLabel value="Data de Nascimento"/><font color="red">*</font>
+                        <p:inputMask class="form-control"
+                                     value="#{usuarioController.user.datanasc}"
+                                     mask="99/99/9999"
+                                     required="true"
+                                     placeholder="DD/MM/AAAA"
+                                     maxlength="10"/>
+                    </div>
+                    <br/>
+                    <div class="redefSenha" id="redefSenha">
+                        <h:commandButton value="Redefinir Senha" 
+                                         class="btn btn-block btn-primary"
+                                         action="#{usuarioController.realizaRedefinirSenha}"/>
+                    </div>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <div id="popup" class="popup">
+        <p>Olá,
+            <button class="fechar" onclick="fechar()">x</button>
+            <b></b>
+            <p>
+                Para redefinir sua senha basta prencher corretamente o que se pede abaixo e clicar em <b>Redefinir Senha</b>.<br/> <font color="red">Uma nova senha é gerada automaticamente e enviada em seu <br/>e-mail.</font>
+            </p>
+        </p>
+    </div>
+</h:body>
+</html>
